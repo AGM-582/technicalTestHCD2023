@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Hacer la solicitud al endpoint parte1
+  // Hacer la solicitud al endpoint de parte1
   fetch("./endpoint.php")
     .then((respuesta) => respuesta.json())
     .then((respuesta) => {
@@ -17,16 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const zonaTabla = document.getElementById("zona-tabla");
 
   function createTable(respuestaEndpoint) {
-    console.log("ENTRANDO EN LA FUNCIÓN:", respuestaEndpoint);
     // Iterar sobre las abreviaturas
     for (const abreviaturaCurso in respuestaEndpoint[0]) {
-      console.log("BUCLE FOR:", respuestaEndpoint[0]);
       if (respuestaEndpoint[0].hasOwnProperty(abreviaturaCurso)) {
         const curso = respuestaEndpoint[0][abreviaturaCurso];
-        console.log("MUESTRO CURSOS: ", curso);
-        // Crear un título para cada curso
+
+        // Crear un título para cada curso agregar id para el formato en css
         const tituloCurso = document.createElement("h2");
-        //agregao id para el formato en css
         tituloCurso.id = "subTitulos";
         tituloCurso.textContent = `Curso: ${abreviaturaCurso}`;
         zonaTabla.appendChild(tituloCurso);

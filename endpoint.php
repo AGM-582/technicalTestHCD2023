@@ -1,12 +1,11 @@
 <?php
 
-# Manejo de errores en la conexión
 $conexion = new mysqli('localhost', 'root', '', 'prueba_tecnica', '3306');
 if ($conexion->connect_error) {
     die('Error de conexión: ' . $conexion->connect_error);
 }
 
-# Ejemplo de Consulta
+# Consulta Obligatoria Parte1
 $consulta = $conexion->query("SELECT alumnos.dni, alumnos.apellido, alumnos.nombres, cursos.cod_curso, cursos.desccripcion, cursos.abreviatura
                               FROM alumnos
                               JOIN inscripciones ON alumnos.dni = inscripciones.dni_Alu 
@@ -39,7 +38,7 @@ while ($fila = $consulta->fetch_assoc()) {
 
 $conexion->close();
 
-# Crear el endpoint y generar el JSON, unicode para ver más bonito
+# Crear el endpoint y generar el JSON, unicode por las dudas
 header('Content-Type: application/json', 'charset=utf-8');
 echo json_encode(array(
     $arrayDatos
