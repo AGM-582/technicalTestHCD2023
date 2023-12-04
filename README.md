@@ -2,6 +2,7 @@
 ##HCD Full-Stack Technical Test taken from 12/01/2023 to 12/04/2023
 > [!IMPORTANT]
 > There's a new student added named Tagarna for better testing of below SQL Sentence.
+
 **Optional Query for Step 1:**
 ```sql
 SELECT
