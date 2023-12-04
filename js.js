@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Hacer la solicitud al endpoint de parte1
   fetch("./endpoint.php")
-    .then((respuesta) => respuesta.json())
-    .then((respuesta) => {
-      if (respuesta && typeof respuesta === "object") {
+    .then((endpointResponse) => endpointResponse.json())
+    .then((endpointResponse) => {
+      if (endpointResponse && typeof endpointResponse === "object") {
         // Crear la tabla
-        createTable(respuesta);
+        createTable(endpointResponse);
       } else {
         console.error(
           "Error: Respuesta del servidor en un formato inesperado."
@@ -14,13 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("Error:", error));
 
-  const zonaTabla = document.getElementById("zona-tabla");
-
-  function createTable(respuestaEndpoint) {
+  function createTable(endpointResponse) {
+    const zonaTabla = document.getElementById("zona-tabla");
     // Iterar sobre las abreviaturas
-    for (const abreviaturaCurso in respuestaEndpoint[0]) {
-      if (respuestaEndpoint[0].hasOwnProperty(abreviaturaCurso)) {
-        const curso = respuestaEndpoint[0][abreviaturaCurso];
+    for (const abreviaturaCurso in endpointResponse[0]) {
+      if (endpointResponse[0].hasOwnProperty(abreviaturaCurso)) {
+        const curso = endpointResponse[0][abreviaturaCurso];
 
         // Crear un título para cada curso agregar id para el formato en css
         const tituloCurso = document.createElement("h2");
